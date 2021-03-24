@@ -91,9 +91,26 @@ console.log(kazThree.stomach);
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car() {
-    
+ function Car(paramModel, paramMilesPerGallon) {  // constructor function. that creates objects
+    this.model = paramModel;
+    this.milesPerGallon = paramMilesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
   }
+
+  Car.prototype.fill = function(gallons) { // Car prototype adds method to constructor function
+     return this.tank += gallons; // remember to return dick head
+  }
+
+  let car = new Car("BMW", "1") // variable that holds object creator from constructor function
+
+  console.log(car.fill(1)) // logging the car object with fill method 
+
+  console.log(car)
+
+  
+
+  
   
   
   /*
@@ -103,18 +120,32 @@ console.log(kazThree.stomach);
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+ function Baby(paramName, paramAge, paramToy) { // constructor
+   this.name = paramName;
+   this.age = paramAge;
+   this.favoriteToy = paramToy;
   }
+
+  Baby.prototype = Object.create(Person.prototype) // inherits from parent
+
+  Baby.prototype.play = function() {
+    return `Playing with ${this.favoriteToy}`
+  }
+
+  let babe = new Baby("kaseem", 24, "JS")
+
+  console.log(babe)
+
+
  
   
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Window Binding
+    2. Implicit Binding
+    3. Explicit Binding
+    4. New Binding 
   */
   
   
